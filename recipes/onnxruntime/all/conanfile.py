@@ -54,7 +54,7 @@ class OnnxRuntimeConan(ConanFile):
         self.requires("abseil/[>=20240116.1 <=20260107.1]")
         self.requires("protobuf/[>=3.21.12 <7]")
         self.requires("date/[>=3.0.1 <3.1]")
-        self.requires("re2/[>=20231101]")
+        self.requires("re2/[>=20231102]")
         self.requires("flatbuffers/23.5.26")
         self.requires("boost/[>=1.83.0 <1.90.0]", headers=True, libs=False)  # for mp11, header only, no need for libraries
         self.requires("safeint/3.0.28")
@@ -120,6 +120,9 @@ class OnnxRuntimeConan(ConanFile):
         tc.variables["onnxruntime_ENABLE_CUDA_EP_INTERNAL_TESTS"] = False
         tc.variables["onnxruntime_USE_NEURAL_SPEED"] = False
         tc.variables["onnxruntime_USE_MEMORY_EFFICIENT_ATTENTION"] = False
+
+        tc.variables["onnxruntime_USE_TENSORRT"] = True
+        tc.variables["onnxruntime_TENSORRT_HOME"] = "/usr/lib/arm-linux-gnu"
 
         # Disable a warning that gets converted to an error
         tc.preprocessor_definitions["_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS"] = "1"
