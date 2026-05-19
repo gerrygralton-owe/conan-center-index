@@ -122,7 +122,10 @@ class OnnxRuntimeConan(ConanFile):
         tc.variables["onnxruntime_USE_MEMORY_EFFICIENT_ATTENTION"] = False
 
         tc.variables["onnxruntime_USE_TENSORRT"] = True
-        tc.variables["onnxruntime_TENSORRT_HOME"] = "/usr/lib/arm-linux-gnu"
+        tc.variables["onnxruntime_TENSORRT_HOME"] = "/usr/lib/aarch64-linux-gnu"
+        tc.variables["onnxruntime_CUDNN_HOME"] = "/etc/alternatives"
+
+        tc.variables["onnxruntime_ENABLE_LTO"] = True
 
         # Disable a warning that gets converted to an error
         tc.preprocessor_definitions["_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS"] = "1"
