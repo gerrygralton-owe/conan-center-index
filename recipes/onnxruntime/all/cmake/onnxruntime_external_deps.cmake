@@ -1,5 +1,7 @@
 # Replacement for https://github.com/microsoft/onnxruntime/blob/v1.23.2/cmake/external/onnxruntime_external_deps.cmake
 
+include(external/helper_functions.cmake)
+
 if(NOT onnxruntime_DISABLE_ABSEIL)
   find_package(absl REQUIRED CONFIG)
   include_directories(${absl_INCLUDE_DIRS})
