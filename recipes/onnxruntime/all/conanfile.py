@@ -54,7 +54,7 @@ class OnnxRuntimeConan(ConanFile):
     def requirements(self):
         self.requires("onnx/[>=1.20.1 <1.21]")
         self.requires("abseil/[>=20240116.1 <=20260107.1]")
-        self.requires("protobuf/[>=3.21.12 <7]")
+        self.requires("protobuf/[>=3.21.12 <6]")
         self.requires("date/[>=3.0.1 <3.1]")
         self.requires("re2/[>=20231102]")
         self.requires("flatbuffers/23.5.26")
