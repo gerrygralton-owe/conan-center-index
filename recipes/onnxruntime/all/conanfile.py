@@ -25,12 +25,14 @@ class OnnxRuntimeConan(ConanFile):
         "fPIC": [True, False],
         "with_xnnpack": [True, False],
         "with_cuda": [True, False],
+        "with_tensorrt": [True, False],
     }
     default_options = {
         "shared": False,
         "fPIC": True,
         "with_xnnpack": False,
         "with_cuda": False,
+        "with_tensorrt": False,
     }
     short_paths = True
 
@@ -121,7 +123,7 @@ class OnnxRuntimeConan(ConanFile):
         tc.variables["onnxruntime_USE_NEURAL_SPEED"] = False
         tc.variables["onnxruntime_USE_MEMORY_EFFICIENT_ATTENTION"] = False
 
-        tc.variables["onnxruntime_USE_TENSORRT"] = True
+        tc.variables["onnxruntime_USE_TENSORRT"] = self.options.with_tensorrt
         tc.variables["onnxruntime_TENSORRT_HOME"] = "/usr/lib/aarch64-linux-gnu"
         tc.variables["onnxruntime_CUDNN_HOME"] = "/etc/alternatives"
 
