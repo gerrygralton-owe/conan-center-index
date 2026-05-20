@@ -116,6 +116,7 @@ onnxruntime_fetchcontent_declare(
  URL_HASH SHA1=01114d3b67650857281fa50faa2e412130a63b69
  EXCLUDE_FROM_ALL
 )
+onnxruntime_fetchcontent_makeavailable(onnx_tensorrt)
 
 set(onnxruntime_LINK_DIRS)
 if (onnxruntime_USE_CUDA)
