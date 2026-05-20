@@ -99,7 +99,7 @@ class OnnxRuntimeConan(ConanFile):
     def generate(self):
         tc = CMakeToolchain(self)
         # disable downloading dependencies to ensure conan ones are used
-        tc.variables["FETCHCONTENT_FULLY_DISCONNECTED"] = True
+        tc.variables["FETCHCONTENT_FULLY_DISCONNECTED"] = False
         tc.variables["onnxruntime_BUILD_SHARED_LIB"] = self.options.shared
         tc.variables["onnxruntime_USE_FULL_PROTOBUF"] = not self.dependencies["protobuf"].options.lite
         tc.variables["onnxruntime_USE_XNNPACK"] = self.options.with_xnnpack

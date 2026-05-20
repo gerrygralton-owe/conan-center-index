@@ -96,6 +96,21 @@ if (onnxruntime_USE_MIMALLOC)
 endif()
 
 # CUDA
+ onnxruntime_fetchcontent_declare(
+ cudnn_frontend
+ URL https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v1.12.0.zip
+ URL_HASH SHA1=7e733cfdc410d777b76122d64232499205589a96
+ EXCLUDE_FROM_ALL
+)
+
+set(CUDNN_FRONTEND_SKIP_JSON_LIB OFF CACHE BOOL "" FORCE)
+set(CUDNN_FRONTEND_BUILD_SAMPLES OFF CACHE BOOL "" FORCE)
+set(CUDNN_FRONTEND_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(CUDNN_FRONTEND_BUILD_PYTHON_BINDINGS OFF CACHE BOOL "" FORCE)
+set(CUDNN_PATH ${onnxruntime_CUDNN_HOME})
+onnxruntime_fetchcontent_makeavailable(cudnn_frontend)
+
+set(onnxruntime_LINK_DIRS)
 if (onnxruntime_USE_CUDA)
   find_package(CUDAToolkit REQUIRED)
 
