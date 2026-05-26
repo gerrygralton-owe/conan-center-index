@@ -112,8 +112,8 @@ onnxruntime_fetchcontent_makeavailable(cudnn_frontend)
 
 onnxruntime_fetchcontent_declare(
  onnx_tensorrt
- URL https://github.com/onnx/onnx-tensorrt/archive/d5dce67db7c2e64b07e055571f5ec06f7f254de2.zip
- URL_HASH SHA1=01114d3b67650857281fa50faa2e412130a63b69
+ URL https://github.com/onnx/onnx-tensorrt/archive/refs/tags/release/10.3-GA.zip
+ URL_HASH SHA256=aad5cec7a7cf30765c11d1375866ee9f07af3339ee264d165c33237a0fcd1e8e
  EXCLUDE_FROM_ALL
 )
 onnxruntime_fetchcontent_makeavailable(onnx_tensorrt)
