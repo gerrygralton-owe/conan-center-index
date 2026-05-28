@@ -96,11 +96,10 @@ if (onnxruntime_USE_MIMALLOC)
 endif()
 
 # CUDA
- onnxruntime_fetchcontent_declare(
- cudnn_frontend
- URL https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v1.12.0.zip
- URL_HASH SHA1=7e733cfdc410d777b76122d64232499205589a96
- EXCLUDE_FROM_ALL
+ FetchContent_Declare(
+  cudnn_frontend
+  URL https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v1.12.0.zip
+  URL_HASH SHA1=7e733cfdc410d777b76122d64232499205589a96:
 )
 
 set(CUDNN_FRONTEND_SKIP_JSON_LIB OFF CACHE BOOL "" FORCE)
@@ -110,11 +109,10 @@ set(CUDNN_FRONTEND_BUILD_PYTHON_BINDINGS OFF CACHE BOOL "" FORCE)
 set(CUDNN_PATH ${onnxruntime_CUDNN_HOME})
 onnxruntime_fetchcontent_makeavailable(cudnn_frontend)
 
-onnxruntime_fetchcontent_declare(
+FetchContent_Declare(
  onnx_tensorrt
  URL https://github.com/onnx/onnx-tensorrt/archive/refs/tags/release/10.3-GA.zip
  URL_HASH SHA256=aad5cec7a7cf30765c11d1375866ee9f07af3339ee264d165c33237a0fcd1e8e
- EXCLUDE_FROM_ALL
 )
 onnxruntime_fetchcontent_makeavailable(onnx_tensorrt)
 
