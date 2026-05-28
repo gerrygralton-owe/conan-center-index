@@ -99,7 +99,7 @@ endif()
  FetchContent_Declare(
   cudnn_frontend
   URL https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v1.12.0.zip
-  URL_HASH SHA1=7e733cfdc410d777b76122d64232499205589a96:
+  URL_HASH SHA1=7e733cfdc410d777b76122d64232499205589a96
 )
 
 set(CUDNN_FRONTEND_SKIP_JSON_LIB OFF CACHE BOOL "" FORCE)
