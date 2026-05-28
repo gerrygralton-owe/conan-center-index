@@ -28,12 +28,14 @@ class OnnxRuntimeConan(ConanFile):
         "fPIC": [True, False],
         "with_xnnpack": [True, False],
         "with_cuda": [True, False],
+        "with_tensorrt": [True, False],
     }
     default_options = {
         "shared": False,
         "fPIC": True,
         "with_xnnpack": False,
         "with_cuda": False,
+        "with_tensorrt": False,
     }
     short_paths = True
 
@@ -123,7 +125,7 @@ class OnnxRuntimeConan(ConanFile):
     def generate(self):
         tc = CMakeToolchain(self)
         # disable downloading dependencies to ensure conan ones are used
-        tc.variables["FETCHCONTENT_FULLY_DISCONNECTED"] = True
+        tc.variables["FETCHCONTENT_FULLY_DISCONNECTED"] = False
         if self.options.shared:
             # Need to replace windows path separators with linux path separators to keep CMake from crashing
             tc.variables["Python_EXECUTABLE"] = sys.executable.replace("\\", "/")
@@ -148,6 +150,12 @@ class OnnxRuntimeConan(ConanFile):
         tc.variables["onnxruntime_ENABLE_CUDA_EP_INTERNAL_TESTS"] = False
         tc.variables["onnxruntime_USE_NEURAL_SPEED"] = False
         tc.variables["onnxruntime_USE_MEMORY_EFFICIENT_ATTENTION"] = False
+
+        tc.variables["onnxruntime_USE_TENSORRT"] = self.options.with_tensorrt
+        tc.variables["onnxruntime_TENSORRT_HOME"] = "/usr/lib/aarch64-linux-gnu"
+        tc.variables["onnxruntime_CUDNN_HOME"] = "/etc/alternatives"
+
+        tc.variables["onnxruntime_ENABLE_LTO"] = True
 
         # Disable a warning that gets converted to an error
         tc.preprocessor_definitions["_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS"] = "1"
