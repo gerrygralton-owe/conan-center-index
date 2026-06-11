@@ -1,0 +1,13 @@
+diff --git a/cmake/CMakeLists.txt b/cmake/CMakeLists.txt
+index 6d0d39556e1..ce7b69ec07b 100644
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -1592,8 +1592,6 @@ if (UNIX OR onnxruntime_USE_NCCL)
+ 
+       list(APPEND onnxruntime_EXTERNAL_LIBRARIES ${NCCL_LIBRARIES})
+ 
+-
+-      add_definitions(-DORT_USE_NCCL=1)
+       message( STATUS "NCCL is enabled in Linux GPU Build." )
+     else ()
+       set(onnxruntime_USE_NCCL OFF)
